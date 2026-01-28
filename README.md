@@ -43,7 +43,7 @@ Add the driver to your `Cargo.toml` dependencies:
 
 ```toml
 [dependencies]
-lsm6dso16is-rs = "0.1.0"
+lsm6dso16is-rs = "2.0.0"
 ```
 
 Or, add it directly from the terminal:
@@ -54,9 +54,28 @@ cargo add lsm6dso16is-rs
 
 ## Usage
 
-Include the crate and its prelude
+By default, the create exposes the **asynchronous** API, and it could be included using:
 ```rust
-use lsm6dso16is_rs as lsm6dso16is;
+use lsm6dso16is_rs::asynchronous as lsm6dso16is;
+use lsm6dso16is::*;
+use lsm6dso16is::prelude::*;
+```
+
+### Blocking API (optional feature)
+
+To use the **blocking** API instead of the asynchronous one, disable default features and enable the `blocking` feature in your Cargo.toml
+```toml
+[dependencies]
+lsm6dso16is-rs = { version = "2.0.0", default-features = false, features = ["blocking"] }
+```
+or from the terminal:
+```sh
+cargo add lsm6dso16is-rs --no-default-features --features blocking
+```
+
+Then import the blocking API:
+```rust
+use lsm6dso16is_rs::blocking as lsm6dso16is;
 use lsm6dso16is::*;
 use lsm6dso16is::prelude::*;
 ```
