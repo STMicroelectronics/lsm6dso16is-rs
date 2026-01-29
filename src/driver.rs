@@ -1426,7 +1426,7 @@ impl<B: BusOperation, T: DelayNs> Lsm6dso16isMaster<B, T> {
         }
     }
 
-    pub fn borrow_mut(&self) -> RefMut<Lsm6dso16is<B, T, MainBank>> {
+    pub fn borrow_mut(&self) -> RefMut<'_, Lsm6dso16is<B, T, MainBank>> {
         self.sensor.borrow_mut()
     }
 
